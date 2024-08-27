@@ -29,12 +29,19 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: website
-          path: |
-            dist/
-            package.json
+          path: dist
+#          path: |
+#            dist/
+#            package.json
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download website
+        uses: actions/download-artifact@v4
+        with:
+          name: website
+      - name: Output files
+        run: ls $GITHUB_WORKSPACE
       - name: Deploy
         run: echo "Deploying..."
