@@ -29,7 +29,7 @@ jobs:
         run: npm run build
       - name: Output JS filename
         id: build
-        run: find dist/assets/*.js -type f -execdir echo 'js-filename={}' ';'
+        run: find dist/assets/*.js -type f -execdir echo 'js-filename={}' >> $GITHUB_ENV ';'
       - name: Archive website
         uses: actions/upload-artifact@v4
         with:
