@@ -15,7 +15,7 @@ jobs:
       - name: Get code
         uses: actions/download-artifact@v3
         with:
-          name: ${{ github.event.inputs.artifact }}
+          name: ${{ inputs.artifact }}
       - name: List files
         run: ls -l
       - name: Output information
