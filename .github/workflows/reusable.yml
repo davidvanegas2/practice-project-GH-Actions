@@ -10,7 +10,6 @@ on:
     outputs:
       status:
         description: 'The status of the deployment'
-        type: string
         value: ${{ jobs.deploy.outputs.status }}
 
 jobs:
