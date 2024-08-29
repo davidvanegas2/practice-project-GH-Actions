@@ -7,9 +7,16 @@ on:
         description: 'The artifact to deploy'
         type: string
         required: true
+    outputs:
+      status:
+        description: 'The status of the deployment'
+        type: string
+        value: ${{ jobs.deploy.outputs.status }}
 
 jobs:
   deploy:
+    outputs:
+      status: ${{ steps.set-status.outputs.status }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -20,3 +27,6 @@ jobs:
         run: ls -l
       - name: Output information
         run: echo "Deploying to production"
+      - name: Set status
+        id: set-status
+        run: echo "status=success" >> $GITHUB_OUTPUT
