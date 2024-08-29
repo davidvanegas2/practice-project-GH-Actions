@@ -1,0 +1,15 @@
+name: Output context on issue trigger
+
+on: issues
+
+jobs:
+  output:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Output title
+        run: echo "The issue title is ${{ github.event.issue.title }}"
+      - name: Output body
+        run: echo "The issue body is ${{ github.event.issue.body }}"
+      - name: Output context
+        run: echo "The context is ${{ toJSON(github.event) }}"
